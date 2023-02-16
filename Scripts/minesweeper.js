@@ -3,8 +3,13 @@
 const colors  = ["RGB(70,0,255)","RGB(0,131,7)","RGB(255,0,0)","RGB(29,0,127)","RGB(136,0,0)","RGB(0,132,131)","RGB(0,0,0)","RGB(128,128,128)"]
 const tileColor = "rgb(187,189,189)"
 const emptyTileColor = "rgb(150,150,150)"
-const height = 20
-const width = 30
+let height = 20
+let width = 30
+
+if (window.matchMedia('(max-width: 1200px)').matches) {
+    height = 25
+    width = 22
+}
 const board = []
 let numberOfBombs = undefined;
 let firstClick = true;
@@ -769,7 +774,7 @@ function makeSubBoard(minY, maxY, minX, maxX){
     var _maxHeight = Math.min(height,maxY+2)
 
     var _minWidth = Math.max(0,minX-2)
-    var _maxWidth = Math.min(height,maxX+2)
+    var _maxWidth = Math.min(width,maxX+2)
 
 
     for(let i = _minHeight; i <= _maxHeight; i++){
@@ -1069,8 +1074,6 @@ function checkBoardValidity(_board, minY, minX, heightY, widthX){
         for(let j = _minWidth; j <= (_maxWidth); j++){
             let tile = _board[i][j]
 
-            
-        
             if(tile.bombsTouching != 0 && tile.bombsTouching != null){
                 let status = checkAroundTile(_board, i, j)
 
