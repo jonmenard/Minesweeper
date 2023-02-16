@@ -1,6 +1,6 @@
 # Minesweeper and Minesweeper AI
 
-This is an implementation of the classic Minesweeper game, created by Jon Menard. The game can be played online at https://jonmenard.github.io/games.html.
+This is an implementation of the classic Minesweeper game. The game can be played online at https://jonmenard.github.io/games.html.
 <img width="783" alt="image" src="https://user-images.githubusercontent.com/55707155/219266447-41997019-730b-4a46-ba3b-466c6e304d45.png">
 
 ## How to play
