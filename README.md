@@ -19,6 +19,9 @@ To flag a cell as containing a mine, right-click on it. If you flag all the mine
 * Hard: 80 mines on a 20x30 board
 * Expert: 120 mines on a 20x30 board
 
+## AI Solver
+
+In additon to the game, this repository contains the code for an AI solver which uses various algorithms and techniques to analyze the Minesweeper board and make educated guesses about which cells contain mines. You can active the AI solver by pressing the solve button at the top right
 
 ## Technologies used
 The game is implemented using HTML, CSS, and JavaScript, and can be played in any modern web browser.
