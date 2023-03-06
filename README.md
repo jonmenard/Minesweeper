@@ -2,7 +2,9 @@
 
 This is an implementation of the classic Minesweeper game. The game can be played online at https://jonmenard.github.io/games.html.
 <p align="center">
- <img width="783" alt="image" src="https://user-images.githubusercontent.com/55707155/219266447-41997019-730b-4a46-ba3b-466c6e304d45.png">
+ <a href = "https://jonmenard.github.io/games.html">
+  <img width="783" alt="image" src="https://user-images.githubusercontent.com/55707155/219266447-41997019-730b-4a46-ba3b-466c6e304d45.png">
+ </a>
 </p>
 
 ## How to play
@@ -31,7 +33,9 @@ The Minesweeper solver employs several algorithms to solve puzzles. A simple alg
 
 The AI solver is activated by pressing the solve button at the top right
 <p align="center">
- <img width="783" alt="image" src="https://user-images.githubusercontent.com/55707155/219266702-894e8605-12b8-47e9-a3c5-28f008936f6f.png">
+ <a href = "https://jonmenard.github.io/games.html">
+  <img width="783" alt="image" src="https://user-images.githubusercontent.com/55707155/219266702-894e8605-12b8-47e9-a3c5-28f008936f6f.png">
+ </a>
 </p>
 
 ## Technologies used
