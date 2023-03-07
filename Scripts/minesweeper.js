@@ -843,6 +843,8 @@ function bruteForce(){
 
         if(subSection.length > 41){
             continue
+        }else if(subSection.length <= 1){
+            continue
         }
 
         let possibleBombs = new Set()
