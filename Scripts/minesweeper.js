@@ -385,7 +385,7 @@ function loose(){
     clearSolver()
     let message 
     if(randomClick){
-        message = "Oops, the AI hit a mine! Based on the current probability distribution, the AI calculated this tile had the lowest chance (" + (randomProb * 100).toFixed(2) + "%) of hitting bomb."
+        message = "Oops, the AI hit a mine! Based on the current probability, the AI calculated this tile had the lowest chance (" + (randomProb * 100).toFixed(2) + "%) of hitting bomb."
     }else{
         message = "Oops, you hit a mine! Better luck next time."  
     }
