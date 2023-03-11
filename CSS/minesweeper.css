@@ -75,11 +75,41 @@
 	float: right;
 }
 
+.fullScreenButton{
+	width: auto;
+	border: none;
+	/* border-left: 2px solid black; */
+	padding: 8px;
+	background:rgb(189, 189,189);
+	border-width: 2px;
+	font-size: 28px;
+	font-weight: bolder;
+	background-size: 30px auto;
+	line-height: 0px;
+	text-align: center;
+	margin-top: 0px;
+	/* margin: -2px -1px 0px -1px !important; */
+	float: right;
+	background-clip: content-box;
+	/* background-size: cover; */
+	background-position: center;
+	background-repeat: no-repeat;
+	transition: transform 0.3s ease-in-out;
+	color: black
+}
+
+.fullScreenButton:hover{
+	padding: 1px;
+	background-clip: padding-box;
+	border: outset !important;
+	/* background-size: cover; */
+}
+
 .toggleFlag:hover{
 	border: outset !important;
 }
 
-#mineSweeperContainer{
+/* #mineSweeperContainer{
 	position: relative;
 	text-align: center;
 	width: min-content;
@@ -87,6 +117,17 @@
 	margin: auto;
 	margin-left: -1px;
 	margin-right: 0px;
+	border: black;
+	border-style: solid;
+	background-color: rgb(189,189,189)
+} */
+
+#mineSweeperContainer{
+	position: relative;
+	/* margin: auto; */
+	height: auto;
+	width: fit-content;
+	text-align: center;
 	border: black;
 	border-style: solid;
 	background-color: rgb(189,189,189)
@@ -149,3 +190,6 @@
 	/* padding-bottom: 2px; */
 	position: static;
 }
+
+
+

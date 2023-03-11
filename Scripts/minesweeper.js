@@ -27,19 +27,22 @@ let randomProb = 0
 var bombsLeft
 var clickFlagsButton
 var solverLoader
+var fullScreenButton
+var closeBtn
+var activeButton
+let body
+let div
 
-function createMenuButton(id, className, value, linkedFunction){
-    var button = document.createElement("button");
-    var text = document.createTextNode(id);
 
-    button.appendChild(text)
-    button.className = className
-    button.style.height = boxWidth + "px";
-    button.id = id
-    button.value = value
-    button.addEventListener("click",linkedFunction);
-    
-    return button
+
+function fullScreen(event){
+    var modal = document.getElementById('modal');
+    modal.style.display = 'flex';
+    var modalContent = document.getElementById('modal-content');
+    modalContent.innerHTML = ""
+    modalContent.appendChild(div)
+    fullScreenButton.hidden = true
+    closeBtn.hidden = false
 }
 
 function toggleFlags(event){
@@ -55,10 +58,33 @@ function toggleFlags(event){
     }
 }
 
+function closeButton(event){
+    closeBtn.hidden = true
+    fullScreenButton.hidden = false
+    body.appendChild(div)
+}
+
+
+function createMenuButton(id, className, value, linkedFunction){
+    var button = document.createElement("button");
+    var text = document.createTextNode(id);
+
+    button.appendChild(text)
+    button.className = className
+    button.style.height = boxWidth + "px";
+    button.style.minHeight = boxWidth + "px ";
+    button.style.backgroundImage = "none"
+    button.id = id
+    button.value = value
+    button.addEventListener("click",linkedFunction);
+    
+    return button
+}
+
 
 function createBoard(){
-    var body = document.getElementById("minesweeperHolder");
-    var div = document.createElement("div");
+    body = document.getElementById("minesweeperHolder");
+    div = document.createElement("div");
     div.id = "mineSweeperContainer";
     body.innerHTML = '';
     body.appendChild(div);
@@ -69,13 +95,24 @@ function createBoard(){
     var expertButton = createMenuButton("Expert", "difficulty", 120, makebombs)
     var solveButton = createMenuButton("Solve ", "solver", "solve", runSolver)
     clickFlagsButton = createMenuButton("","toggleFlag", 0, toggleFlags)
-    clickFlagsButton.style.backgroundImage = "none"
     clickFlagsButton.style.backgroundSize = boxWidth+ "px " + boxWidth + "px"
     clickFlagsButton.style.backgroundImage = "URL('Images/flag.jpeg')"
-    clickFlagsButton.style.height = boxWidth + "px ";
     clickFlagsButton.style.width = boxWidth + "px ";
-    clickFlagsButton.style.minHeight = boxWidth + "px ";
     clickFlagsButton.style.minWidth = boxWidth + "px ";
+
+    fullScreenButton = createMenuButton("","fullScreenButton", 0, fullScreen)
+    fullScreenButton.style.backgroundImage = "URL('Images/expand.png')"
+    fullScreenButton.style.width = boxWidth + "px ";
+    fullScreenButton.style.minWidth = boxWidth + "px ";
+
+
+    closeBtn = createMenuButton("X","fullScreenButton close", 0, closeButton)
+    closeBtn.style.width = boxWidth + "px ";
+    closeBtn.style.minWidth = boxWidth + "px ";
+
+    // <button class="fullscreen-button">
+  
+    closeBtn.hidden = true
 
 
     
@@ -140,6 +177,8 @@ function createBoard(){
         cell.classList.add("mineSweeperCell");
         j += 3
         if(j >= width){
+            cell.appendChild(closeBtn)
+            cell.appendChild(fullScreenButton)
             cell.appendChild(clickFlagsButton)
         }
     }
@@ -292,6 +331,23 @@ function clearSolver(){
     solverLoader.style.visibility = "hidden";
 }
 
+
+function alertWithMessage(message, type){
+    alertModal.style.display = 'flex';
+    alertMessage.innerHTML = message
+
+    alertMessage.classList.remove('alert-pass')
+    alertMessage.classList.remove('alert-error')
+    
+    if(type != undefined){
+        if(type){
+            alertMessage.classList.add('alert-pass')
+            return
+        }
+        alertMessage.classList.add('alert-error')
+    }
+}
+
 function checkWin(){
 
     let count = 0;
@@ -306,7 +362,7 @@ function checkWin(){
     if(count == numberOfBombs){
         gameInProgress = false
         clearSolver()
-        alert("you win");
+        alertWithMessage("Congratulations: You win", true);
         showBombs();
         return;
     }
@@ -320,16 +376,20 @@ function checkWin(){
     }
     gameInProgress = false
     clearSolver()
-    alert("you win");
+    alertWithMessage("Congratulations: You win", true);
     showBombs();
 
 }
 
 function loose(){
-    clearSolver() 
+    clearSolver()
+    let message 
     if(randomClick){
-        alert("Solver Failed: random click had " + (randomProb * 100).toFixed(2) + "% chance of hitting bomb");
+        message = "Oops, the AI hit a mine! Based on the current probability distribution, the AI calculated this tile had the lowest chance (" + (randomProb * 100).toFixed(2) + "%) of hitting bomb."
+    }else{
+        message = "Oops, you hit a mine! Better luck next time."  
     }
+    alertWithMessage(message, false)
     randomClick = false
     showBombs();
     gameInProgress = false
@@ -1100,5 +1160,6 @@ function checkBoardValidity(_board, minY, minX, heightY, widthX){
 }
 
 createBoard();
+
 
 
