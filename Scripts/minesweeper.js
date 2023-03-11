@@ -46,7 +46,10 @@ function fullScreen(event){
 }
 
 function toggleFlags(event){
-    
+    console.log(solver)
+    if(solver){
+        return
+    }
     placeFlags = !placeFlags
     if(placeFlags){
         event.target.style.backgroundImage = "URL('Images/flagSelected.png')"
@@ -328,6 +331,7 @@ function resetMineSweeper(){
 
 function clearSolver(){
     clearInterval(solver)
+    solver = null
     solverLoader.style.visibility = "hidden";
 }
 
@@ -577,6 +581,9 @@ function clickUndiscovered(xValue, yValue, bombsRemaining, i, j){
 
 
 function runSolver(){
+    if(placeFlags){
+        clickFlagsButton.click()
+    }
     clearSolver()
     solverLoader.style.visibility = "visible";
     solver = setInterval(solve, 10);
@@ -956,6 +963,9 @@ function bruteForce(){
                 if(solved){
                     clearSolver()
                     solverLoader.style.visibility = "visible";
+                    if(placeFlags){
+                        clickFlagsButton.click()
+                    }
                     solver = setInterval(clickBoard, 10);
                     return
                 }

@@ -31,6 +31,10 @@ body {
 	background-color: #1b1c1d;
 }
 
+button:hover, input:hover {
+	text-decoration: underline;
+}
+
 html{
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	background-size: cover;
