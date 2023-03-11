@@ -46,7 +46,6 @@ function fullScreen(event){
 }
 
 function toggleFlags(event){
-    console.log(solver)
     if(solver){
         return
     }
