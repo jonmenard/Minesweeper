@@ -95,7 +95,7 @@ function createBoard(){
     var mediumButton = createMenuButton("Medium", "difficulty", 50, makebombs)
     var hardButton = createMenuButton("Hard", "difficulty", 80, makebombs)
     var expertButton = createMenuButton("Expert", "difficulty", 120, makebombs)
-    var solveButton = createMenuButton("Solve ", "solver", "solve", runSolver)
+    var solveButton = createMenuButton("Solve ", "solver", "solve", startSolver)
     clickFlagsButton = createMenuButton("","toggleFlag", 0, toggleFlags)
     clickFlagsButton.style.backgroundSize = boxWidth+ "px " + boxWidth + "px"
     clickFlagsButton.style.backgroundImage = "URL('Images/flag.jpeg')"
@@ -578,6 +578,19 @@ function clickUndiscovered(xValue, yValue, bombsRemaining, i, j){
     return false
 }
 
+
+function startSolver(){
+
+    for(let i = 0; i < height; i++){
+        for(let j = 0; j < width; j++){
+            if(board[i][j].flagged){
+                flagButton(i,j);
+            }
+        }
+    }
+
+    runSolver()
+}
 
 function runSolver(){
     if(placeFlags){
